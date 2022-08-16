@@ -1,0 +1,28 @@
+# .gitignore 文件配置说明
+
+# # 开头的表示注释行
+# * 用来匹配零个或者多个字符
+#     *.a 忽略 .a 文件
+#     *.[oa] 忽略所有以 .a 和 .o 结尾文件
+# [] 匹配括号内的任一字符
+# ? 匹配单个字符
+# ! 用来否定忽略  
+#     *.txt 会忽略所有txt结尾文件 !*a.txt 表示 a.txt 文件不会被忽略
+# / 在前面匹配项目根目录，在后面匹配文件夹及该文件夹路径下的内容，但不匹配该文件
+# ** 匹配多级目录
+
+node_modules
+/dist
+
+# local env files
+.env.local
+
+# Log files
+
+
+# Editor directories and files
+
+
+# 案例
+#忽略所有的 .pdf 文件 在 doc/ directory 下的
+doc/**/*.pdf

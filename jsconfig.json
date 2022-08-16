@@ -1,9 +1,17 @@
+// 目录中存在jsconfig.json(tsconfig.json)文件表明该目录是项目的根目录
+// 该jsconfig.json(tsconfig.json)文件指定编译项目所需的根文件和编译器选项
 {
   "compilerOptions": {
+    // 指定要使用的默认库
     "target": "es5",
+    // 在生成模块代码时指定模块系统
     "module": "esnext",
+    // 指定模块基础目录
     "baseUrl": "./",
+    // 指定如何解析导入模块
     "moduleResolution": "node",
+    // 指定相对于模块路径别名映射
+    // 解决项目中使用@作为路径别名，导致vscode无法跳转文件的问题
     "paths": {
       "@/*": [
         "src/*"
