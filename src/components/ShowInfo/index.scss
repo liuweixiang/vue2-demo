@@ -1,0 +1,146 @@
+$class-prefix: hd-showinfo;
+
+.#{$class-prefix} {
+  display: inline-block;
+  width: 480px;
+  padding-bottom: 10px;
+  vertical-align: middle;
+  background-color: #FFF;
+  box-shadow: 0px 12px 48px 16px rgba(0,0,0,0.03),0px 9px 28px 0px rgba(0,0,0,0.05),0px 6px 16px -8px rgba(0,0,0,0.08);
+  border-radius: 2px;
+  box-sizing: border-box;
+  text-align: left;
+  -webkit-font-smoothing:antialiased;
+
+  &-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+
+    &:after {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 0;
+      vertical-align: middle;
+    }
+  }
+
+  &-header {
+    position: relative;
+    padding: 9px 16px 14px 24px;
+    border-bottom: 1px solid #F0F0F0;
+    min-height: 48px;
+  }
+
+  &-title, &-tip {
+    font-size: 16px;
+    font-weight: 500;
+    font-family:PingFangSC-Medium,PingFang SC;
+    line-height: 24px;
+    color: #000;
+  }
+
+  &-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 0;
+    outline: none;
+    border: none;
+    color: #8C8C8C;
+    background: transparent;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
+  }
+
+  &-content {
+    min-height: 86px;
+    max-height: 315px;
+    overflow: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 0 !important;
+    }
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+  }
+
+  &-tip {
+    display: flex;
+    align-items: flex-start;
+    padding: 29px 33px 0; 
+    & > img {
+      margin-right: 16px;
+      height: 22px;
+      width: 22px;
+      margin-top: 1px;
+    }
+    &--desc {
+      color: #666;
+      font-weight:400;
+      font-family:PingFangSC-Regular,PingFang SC;
+    }
+    &--only-alert {
+      padding-bottom: 29px;
+    }
+  }
+
+  &-notice-wrapper {
+    padding: 11px 40px 25px 57px;
+    & > p {
+      margin-left: 15px;
+      color: #D90505;
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+
+  &-notice {
+    margin-top: 6px;
+    list-style: none;
+    & > li {
+      font-size: 14px;
+      line-height:22px;
+      color: #333;
+      .dot {
+        margin-top: 8px;
+        margin-right: 8px;
+        height: 6px;
+        width: 6px;
+        background-color: #2A3344;
+        border-radius: 100%;
+      }
+    }
+  }
+
+  &-notice-content {
+    &--has-more {
+      margin-bottom: 10px;
+    }
+  }
+   &-reason-wrap {
+     display: flex;
+     & > p {
+       flex: 1;
+     }
+   }
+
+  &-footer {
+    padding: 9px 16px 0;
+    border-top: 1px solid #f0f0f0;
+    text-align: right;
+    .el-button {
+      padding: 8px 13px;
+      font-size: 14px;
+      font-family:PingFangSC-Regular,PingFang SC;
+      font-weight:400;
+      border-radius: 2px;
+    }
+  }
+}

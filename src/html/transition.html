@@ -1,0 +1,139 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: sueRimn
+ * @Date: 2020-11-26 20:03:35
+ * @LastEditors: sueRimn
+ * @LastEditTime: 2021-05-25 15:49:08
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        @keyframes scroll {
+            0% {
+                transform:translate(0,0);
+            }
+            100% {
+                transform: translate(0,-120px);
+            }
+        }
+        .ul {
+            /* margin-top: 100px; */
+            margin: 10px auto 10px;
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 20px;
+            background-color: blue;
+            opacity: 0.5;
+            text-align: center;
+            overflow: hidden;
+        }
+        .li {
+            font-size: 20px;
+            font-weight: 500;
+            color: #ffffff;
+            animation-name: scroll;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        .costomClass {
+            /* height: 40px;
+            line-height: 40px; */
+            background: #fafafa;
+            display: flex;
+            justify-content: center;
+        }
+        .item_content {
+            margin: 0 20px;
+        }
+        .item {
+            height: 50px;
+            line-height: 50px;
+        }
+        .activeItme {
+            color: #E1251B;
+            border-bottom: 2px solid #E1251B;
+            position: relative;
+        }
+        .activeItme::after {
+            content: "";
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-bottom-color: #E1251B;
+            position: absolute;
+            bottom: 0;
+            left: calc(50% - 5px);
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="ul">
+        <div class="li">刘伟翔</div>
+        <div class="li">吴一帆</div>
+        <div class="li">郭增辉</div>
+        <div class="li">梦莹</div>
+        <!-- 填充内容 -->
+        <div class="li">李乔</div>
+    </div>
+
+    <div style="margin: 20px 0;">====================================================================</div>
+
+    <div class="costomClass">
+        <div class="item_content">
+            <div class="item activeItme">招采集采</div>
+        </div>
+        <div class="item_content">
+            <div class="item">会员经营</div>
+        </div>
+    </div>
+
+    <script>
+        $(function() {
+            console.log("DOM加载完毕=====");
+            function dateFormater(time, type) {
+                const date = new Date(time);
+                let y = date.getFullYear();
+                let M = date.getMonth() + 1; //获取当前月份的日期
+                let d = date.getDate();
+                // let h: any = date.getHours();
+                // let m: any = date.getMinutes();
+                // let s: any = date.getSeconds();
+                if (type === 'day') {
+                return `${M < 10 ? '0' + M : M}.${d < 10 ? '0' + d : d}`;
+                } else {
+                return `${y}-${M < 10 ? '0' + M : M}`;
+                }
+            }
+
+            function getXAxisTimeList(type) {
+                const timeList = [];
+                for (let i = 1; i <= 7; i++) {
+                const date = new Date();
+                if(type === 1) {
+                    date.setDate(date.getDate() - i);
+                } else {
+                    date.setMonth(date.getMonth() + 1 - i)
+                }
+                const dateStr = dateFormater(date, type === 1 ? 'day' : 'month');
+                timeList.unshift(dateStr);
+                }
+                return timeList;
+            }
+            const list = getXAxisTimeList(2);
+            console.log(list,'list===>');
+        })
+    </script>
+</body>
+</html>
