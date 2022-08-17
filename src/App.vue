@@ -14,7 +14,10 @@
       }
     },
     methods: {
-      init() {}
+      init() {
+        let age = ''
+        let proto = Object.__proto__
+      }
     }
   }
 </script>
