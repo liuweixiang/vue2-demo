@@ -1,11 +1,10 @@
-
 function checkArray(key) {
-  let arr = [1,2,3,4]
+  let arr = [1, 2, 3, 4]
   return arr.indexOf(key) > -1
 }
 
 const permission = {
-  inserted: function (el, binding) {
+  inserted: function(el, binding) {
     let permission = binding.value // 获取到 v-permission的值
     if (permission) {
       let hasPermission = checkArray(permission)
@@ -14,7 +13,7 @@ const permission = {
         el.parentNode && el.parentNode.removeChild(el)
       }
     }
-  },
+  }
 }
 
 export default permission

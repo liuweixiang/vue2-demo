@@ -28,4 +28,4 @@ const directives = {
   overflowTip
 }
 
-Object.keys(directives).forEach(key => Vue.directive(key, directives[key]))
+Object.keys(directives).forEach((key) => Vue.directive(key, directives[key]))

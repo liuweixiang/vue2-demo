@@ -4,7 +4,7 @@
  */
 export default {
   name: 'limit-input',
-  bind (el, binding, vnode, oldvnode) {
+  bind(el, binding, vnode, oldvnode) {
     const typeMap = {
       // 只输入数字
       digit: /\D/g,
@@ -36,15 +36,15 @@ export default {
     const input = tagName === 'input' ? el : el.querySelector('input')
     const regKey = arg || (arg === 'reg' && value)
     // 输入法气泡窗弹出，开始拼写
-    el.compositionstartHandler = function () {
+    el.compositionstartHandler = function() {
       el.inputLocking = true
     }
     // 输入法气泡窗关闭，输入结束
-    el.compositionendHandler = function () {
+    el.compositionendHandler = function() {
       el.inputLocking = false
       input.dispatchEvent(new Event('input'))
     }
-    el.inputHandler = function (e) {
+    el.inputHandler = function(e) {
       if (el.inputLocking) return
       const oldValue = e.target.value
       const newValue = oldValue.replace(typeMap[regKey], '')
@@ -76,7 +76,7 @@ export default {
     input.addEventListener('compositionend', el.compositionendHandler)
     input.addEventListener('input', el.inputHandler)
   },
-  unbind (el) {
+  unbind(el) {
     const tagName = el.tagName.toLowerCase()
     const input = tagName === 'input' ? el : el.querySelector('input')
     input.removeEventListener('compositionstart', el.compositionstartHandler)

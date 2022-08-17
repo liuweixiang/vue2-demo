@@ -7,12 +7,12 @@ export const NONE = 'none'
 /**
  * 弹框行为枚举
  */
- export const ActionTypeEnum = {
-    Confirm: 'confirm',
-    Cancel: 'cancel',
-    Close: 'close',
-    Continue: 'continue',
-    Open: 'open',
-    Opened: 'opened',
-    Closed: 'closed'
-  }
+export const ActionTypeEnum = {
+  Confirm: 'confirm',
+  Cancel: 'cancel',
+  Close: 'close',
+  Continue: 'continue',
+  Open: 'open',
+  Opened: 'opened',
+  Closed: 'closed'
+}

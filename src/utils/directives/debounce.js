@@ -3,7 +3,7 @@ const findEle = (parent, type) => {
 }
 
 export const debounce = {
-  inserted: function (el, binding) {
+  inserted: function(el, binding) {
     if (typeof binding.value !== 'function') {
       throw new Error('指令的参数必须是函数')
     }
@@ -20,21 +20,21 @@ export const debounce = {
     }
     el.addEventListener('input', el.handle)
   },
-  unbind: function (el) {
+  unbind: function(el) {
     el.$inp.removeEventListener('input', el.$inp.handle)
   }
 }
 
-// throttle 节流
+//throttle 节流
 export const throttle = {
-  inserted (el, binding) {
+  inserted(el, binding) {
     if (typeof binding.value !== 'function') {
       throw new Error('指令的参数必须是函数')
     }
     let flg = false
     let timerName
     let time = 500
-    if(binding.arg) {
+    if (binding.arg) {
       time = parseInt(binding.arg)
     }
     el.handle = () => {
@@ -47,7 +47,7 @@ export const throttle = {
     }
     el.addEventListener('click', el.handle)
   },
-  unbind(el,binding) {
-    el.removeEventListener('click',el.handle)
+  unbind(el, binding) {
+    el.removeEventListener('click', el.handle)
   }
 }

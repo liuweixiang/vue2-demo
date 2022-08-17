@@ -1,13 +1,13 @@
 const draggable = {
-  bind(el,binding) {
+  bind(el, binding) {
     el.style.cursor = 'move'
   },
-  inserted: function (el) {
-    el.onmousedown = function (e) {
-      // el.offsetTop/Left 元素到父元素上边/左边的距离
+  inserted: function(el) {
+    el.onmousedown = function(e) {
+      //el.offsetTop/Left 元素到父元素上边/左边的距离
       let disx = e.pageX - el.offsetLeft
       let disy = e.pageY - el.offsetTop
-      document.onmousemove = function (e) {
+      document.onmousemove = function(e) {
         let x = e.pageX - disx
         let y = e.pageY - disy
         let maxX = document.body.clientWidth - parseInt(window.getComputedStyle(el).width)
@@ -27,10 +27,10 @@ const draggable = {
         el.style.left = x + 'px'
         el.style.top = y + 'px'
       }
-      document.onmouseup = function () {
+      document.onmouseup = function() {
         document.onmousemove = document.onmouseup = null
       }
     }
-  },
+  }
 }
 export default draggable

@@ -3,7 +3,7 @@
  * 使用  v-removeZero.keep
  */
 export default {
-  bind (el, binding) {
+  bind(el, binding) {
     const { modifiers } = binding
     const tagName = el.tagName.toLowerCase()
     // `el.querySelector('input')` in order to adapt el-input
@@ -19,12 +19,13 @@ export default {
       }
     })
 
-    modifiers.keep && input.addEventListener('blur', (e) => {
-      const { value } = e.target
+    modifiers.keep &&
+      input.addEventListener('blur', (e) => {
+        const { value } = e.target
 
-      if (value === '') {
-        input.value = oldValue
-      }
-    })
+        if (value === '') {
+          input.value = oldValue
+        }
+      })
   }
 }

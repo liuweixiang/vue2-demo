@@ -3,10 +3,10 @@
  * 用法：v-overflow-tooltip / v-overflow-tooltip:width
  * width 可选
  * 只要当dom元素内容超出设置的宽度时，超出文字省略号显示，鼠标画上去有全部文字提示
-*/
+ */
 export default {
   name: 'overflow-tooltip',
-  bind (el, binding) {
+  bind(el, binding) {
     const width = binding.arg
     if (width) {
       el.style.width = `${width}px`
@@ -18,10 +18,10 @@ export default {
     }
     setStyle(el, style)
   },
-  inserted (el, binding) {
+  inserted(el, binding) {
     addTooltip(el, binding)
   },
-  unbind (el) {
+  unbind(el) {
     if (!el.tooltip) return
     el.removeEventListener('mouseenter', el.elMouseEnterHandler)
     el.removeEventListener('mouseleave', el.elMouseOutHandler)
@@ -29,7 +29,7 @@ export default {
   }
 }
 
-function addTooltip (el, binding) {
+function addTooltip(el, binding) {
   el.oldOffsetWidth = el.offsetWidth
   if (!el.textWidth) {
     // 计算文本宽度
@@ -37,14 +37,15 @@ function addTooltip (el, binding) {
     range.setStart(el, 0)
     range.setEnd(el, el.childNodes.length)
     const rangeWidth = range.getBoundingClientRect().width
-    const padding = (parseInt(getStyle(el, 'paddingLeft'), 10) || 0) +
-        (parseInt(getStyle(el, 'paddingRight'), 10) || 0)
+    const padding =
+      (parseInt(getStyle(el, 'paddingLeft'), 10) || 0) +
+      (parseInt(getStyle(el, 'paddingRight'), 10) || 0)
     const textWidth = rangeWidth + padding
     el.textWidth = textWidth
   }
 
   // 监听元素宽度变化
-  const resizeObserver = new ResizeObserver(entry => {
+  const resizeObserver = new ResizeObserver((entry) => {
     const target = entry[0].target
     el.oldOffsetWidth !== target.offsetWidth && addTooltip(el, binding)
   })
@@ -54,7 +55,7 @@ function addTooltip (el, binding) {
   if (el.textWidth > Math.max(el.offsetWidth, binding.arg || 0)) {
     let tooltip = null
 
-    const elMouseEnterHandler = el.elMouseEnterHandler = debounce((event) => {
+    const elMouseEnterHandler = (el.elMouseEnterHandler = debounce((event) => {
       if (!tooltip) {
         const tooltipContent = el.innerText || el.textContent
         tooltip = new Tooltip()
@@ -63,10 +64,10 @@ function addTooltip (el, binding) {
       }
       // 400为tootip最大宽度
       tooltip.show(event, Math.min(el.textWidth, 400))
-    }, 300)
-    const elMouseOutHandler = el.elMouseOutHandler = debounce(() => {
+    }, 300))
+    const elMouseOutHandler = (el.elMouseOutHandler = debounce(() => {
       tooltip && tooltip.hide()
-    }, 300)
+    }, 300))
 
     el.addEventListener('mouseenter', elMouseEnterHandler)
     el.addEventListener('mouseleave', elMouseOutHandler)
@@ -96,44 +97,51 @@ const SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g
 const MOZ_HACK_REGEXP = /^moz([A-Z])/
 const ieVersion = Number(document.documentMode)
 const camelCase = function(name) {
-  return name.replace(SPECIAL_CHARS_REGEXP, function(_, separator, letter, offset) {
-    return offset ? letter.toUpperCase() : letter
-  }).replace(MOZ_HACK_REGEXP, 'Moz$1')
+  return name
+    .replace(SPECIAL_CHARS_REGEXP, function(_, separator, letter, offset) {
+      return offset ? letter.toUpperCase() : letter
+    })
+    .replace(MOZ_HACK_REGEXP, 'Moz$1')
 }
 
-const getStyle = ieVersion < 9 ? function(element, styleName) {
-  if (!element || !styleName) return null
-  styleName = camelCase(styleName)
-  if (styleName === 'float') {
-    styleName = 'styleFloat'
-  }
-  try {
-    switch (styleName) {
-      case 'opacity':
-        try {
-          return element.filters.item('alpha').opacity / 100
-        } catch (e) {
-          return 1.0
+const getStyle =
+  ieVersion < 9
+    ? function(element, styleName) {
+        if (!element || !styleName) return null
+        styleName = camelCase(styleName)
+        if (styleName === 'float') {
+          styleName = 'styleFloat'
         }
-      default:
-        return (element.style[styleName] || element.currentStyle ? element.currentStyle[styleName] : null)
-    }
-  } catch (e) {
-    return element.style[styleName]
-  }
-} : function(element, styleName) {
-  if (!element || !styleName) return null
-  styleName = camelCase(styleName)
-  if (styleName === 'float') {
-    styleName = 'cssFloat'
-  }
-  try {
-    var computed = document.defaultView.getComputedStyle(element, '')
-    return element.style[styleName] || computed ? computed[styleName] : null
-  } catch (e) {
-    return element.style[styleName]
-  }
-}
+        try {
+          switch (styleName) {
+            case 'opacity':
+              try {
+                return element.filters.item('alpha').opacity / 100
+              } catch (e) {
+                return 1.0
+              }
+            default:
+              return element.style[styleName] || element.currentStyle
+                ? element.currentStyle[styleName]
+                : null
+          }
+        } catch (e) {
+          return element.style[styleName]
+        }
+      }
+    : function(element, styleName) {
+        if (!element || !styleName) return null
+        styleName = camelCase(styleName)
+        if (styleName === 'float') {
+          styleName = 'cssFloat'
+        }
+        try {
+          let computed = document.defaultView.getComputedStyle(element, '')
+          return element.style[styleName] || computed ? computed[styleName] : null
+        } catch (e) {
+          return element.style[styleName]
+        }
+      }
 
 function setStyle(element, styleName, value) {
   if (!element || !styleName) return
@@ -155,7 +163,7 @@ function setStyle(element, styleName, value) {
 }
 
 class Tooltip {
-  constructor () {
+  constructor() {
     this.id = 'autoToolTip'
     this.styleId = 'autoToolTipStyle'
     this.tooltipContent = ''
@@ -195,7 +203,7 @@ class Tooltip {
     this.showStatus = false
   }
 
-  create (tooltipContent) {
+  create(tooltipContent) {
     this.tooltipContent = tooltipContent
     const autoToolTip = document.querySelector('#' + this.id)
     // 同时只添加一个
@@ -221,7 +229,7 @@ class Tooltip {
     this.tooltipElement = element
   }
 
-  show (event, textWidth) {
+  show(event, textWidth) {
     if (this.showStatus) return
 
     const targetElement = event.target
@@ -239,7 +247,7 @@ class Tooltip {
     setStyle(this.tooltipElement, style)
   }
 
-  hide () {
+  hide() {
     const style = {
       left: '0px',
       top: '0px',
@@ -251,14 +259,14 @@ class Tooltip {
     this.showStatus = false
   }
 
-  removeTextNode () {
+  removeTextNode() {
     const { firstChild } = this.tooltipElement
     if (Object.prototype.toString.call(firstChild) === '[object Text]') {
       this.tooltipElement.removeChild(firstChild)
     }
   }
 
-  destroy () {
+  destroy() {
     const { tooltipElement, styleElement } = this
     tooltipElement && tooltipElement.remove()
     styleElement && styleElement.remove()

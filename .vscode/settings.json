@@ -1,0 +1,36 @@
+{
+  // 配置语言的文件关联
+  "files.associations": {
+    "*.html": "html",
+    "*.vue": "vue",
+    "*.cjson": "jsonc"
+  },
+  "editor.tabSize": 2,
+  // 关闭编辑器自带保存格式化功能，此功能会用Vetur进行格式化(使用prettier时需要开启)
+  "editor.formatOnSave": true,
+  "vetur.validation.template": false, // 关闭 Vetur 的模板验证
+  "vetur.format.enable": false, // 打开或关闭 Vetur 格式化程序
+  // "vetur.format.defaultFormatter": "none", // 可用来设置不同语言的格式化程序
+
+  // 该配置要求vscode编辑器必须安装 ESLint 扩展插件(扩展商店搜索eslint安装)
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "reacttypescript",
+    "reactjavascript",
+    "html",
+    "vue"
+  ],
+  // 是否为JavaScript文件开启eslint检测，默认开启
+  "eslint.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  // 在快速修复菜单中显示打开的 lint 规则文档网页
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  }
+}

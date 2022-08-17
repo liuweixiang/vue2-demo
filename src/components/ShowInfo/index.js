@@ -42,21 +42,27 @@ const defaults = {
 
 const ShowInfoConstructor = Vue.extend(showInfo)
 
-console.log(ShowInfoConstructor,'ShowInfoConstructor');
+console.log(ShowInfoConstructor, 'ShowInfoConstructor')
 
 let instance, currentMsg
 let msgQueue = []
 
-const defaultCallback = action => {
+const defaultCallback = (action) => {
   if (currentMsg) {
     const callback = currentMsg.callback
     if (typeof callback === 'function') {
       callback(action)
     }
   }
-  if (currentMsg.resolve && action === ActionTypeEnum.Confirm || action === ActionTypeEnum.Continue) {
+  if (
+    (currentMsg.resolve && action === ActionTypeEnum.Confirm) ||
+    action === ActionTypeEnum.Continue
+  ) {
     currentMsg.resolve(action)
-  } else if (currentMsg.reject && (action === ActionTypeEnum.Cancel || action === ActionTypeEnum.Close)) {
+  } else if (
+    currentMsg.reject &&
+    (action === ActionTypeEnum.Cancel || action === ActionTypeEnum.Close)
+  ) {
     currentMsg.reject(action)
   }
 }
@@ -100,7 +106,13 @@ const showNextMsg = () => {
       } else {
         delete instance.$slots.default
       }
-      ['modal', 'showClose', 'closeOnClickModal', 'closeOnPressEscape', 'closeOnHashChange'].forEach(prop => {
+      ;[
+        'modal',
+        'showClose',
+        'closeOnClickModal',
+        'closeOnPressEscape',
+        'closeOnHashChange'
+      ].forEach((prop) => {
         if (instance[prop] === undefined) {
           instance[prop] = true
         }
@@ -115,7 +127,7 @@ const showNextMsg = () => {
 }
 
 const ShowInfo = function(options, callback) {
-    console.log(options,'==optionsoptions');
+  console.log(options, '==optionsoptions')
   if (Vue.prototype.$isServer) return
   if (typeof options === 'string' || isVNode(options)) {
     options = {
@@ -149,39 +161,55 @@ const ShowInfo = function(options, callback) {
   }
 }
 
-ShowInfo.setDefaults = defaults => {
+ShowInfo.setDefaults = (defaults) => {
   ShowInfo.defaults = defaults
 }
 
-const handleOptionOnlyHasMessage = options => typeof options === 'string' ? (options = { message: options }) : options
+const handleOptionOnlyHasMessage = (options) =>
+  typeof options === 'string' ? (options = { message: options }) : options
 
-ShowInfo.alert = options => {
+ShowInfo.alert = (options) => {
   options = handleOptionOnlyHasMessage(options)
-  return ShowInfo(merge({
-    $type: MessageTypeEnum.Alert,
-    closeOnPressEscape: false,
-    closeOnClickModal: false
-  }, options))
+  return ShowInfo(
+    merge(
+      {
+        $type: MessageTypeEnum.Alert,
+        closeOnPressEscape: false,
+        closeOnClickModal: false
+      },
+      options
+    )
+  )
 }
 
-ShowInfo.confirm = options => {
+ShowInfo.confirm = (options) => {
   options = handleOptionOnlyHasMessage(options)
   debugger
-  console.log(options,'=============options');
-  return ShowInfo(merge({
-    $type: MessageTypeEnum.Confirm,
-    showCancelButton: false
-  }, options))
+  console.log(options, '=============options')
+  return ShowInfo(
+    merge(
+      {
+        $type: MessageTypeEnum.Confirm,
+        showCancelButton: false
+      },
+      options
+    )
+  )
 }
 
-ShowInfo.continue = options => {
+ShowInfo.continue = (options) => {
   options = handleOptionOnlyHasMessage(options)
-  return ShowInfo(merge({
-    $type: MessageTypeEnum.Continue,
-    showCancelButton: true,
-    showConfirmButton: false,
-    showContinueButton: true
-  }, options))
+  return ShowInfo(
+    merge(
+      {
+        $type: MessageTypeEnum.Continue,
+        showCancelButton: true,
+        showConfirmButton: false,
+        showContinueButton: true
+      },
+      options
+    )
+  )
 }
 
 ShowInfo.close = () => {
