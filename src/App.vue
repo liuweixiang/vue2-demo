@@ -24,7 +24,7 @@
 <style lang="scss">
   html,
   body {
-    font-family: PingFangSC, PingFangSC-Medium;
+    font-family: PingFangSC, PingFangWC-Medium;
     overflow: visible !important;
     overflow-x: hidden !important;
   }
