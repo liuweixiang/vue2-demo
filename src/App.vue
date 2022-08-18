@@ -16,7 +16,7 @@
     },
     methods: {
       init() {
-        // let obj = Object.__proto__
+        let obj = Object.__proto__
       }
     }
   }
