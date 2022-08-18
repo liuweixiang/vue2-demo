@@ -3,6 +3,11 @@ module.exports = {
   extends: ['@commitlint/config-conventional'],
   // 定义规则类型
   rules: {
+    'body-leading-blank': [2, 'always'],
+    'footer-leading-blank': [1, 'always'],
+    'header-max-length': [2, 'always', 108],
+    'subject-empty': [2, 'never'],
+    'type-empty': [2, 'never'],
     // type 类型定义，表示 git 提交的 type 必须在以下类型范围内
     'type-enum': [
       2,
