@@ -27,7 +27,7 @@ Vue.use(dataV)
 //var doc = win.document
 //var docEl = doc.documentElement
 //var tid
- 
+
 //function refreshRem () {
 //var width = docEl.getBoundingClientRect().width
 //// console.log('视窗宽度')
@@ -38,7 +38,7 @@ Vue.use(dataV)
 //var rem = width / 6.4
 //docEl.style.fontSize = rem + 'px'
 //}
- 
+
 //win.addEventListener(
 //'resize',
 //function () {
@@ -61,7 +61,7 @@ Vue.use(dataV)
 //},
 //false
 //)
- 
+
 //refreshRem()
 //})(window)
 //==========================================rem
@@ -71,5 +71,5 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App)
 }).$mount('#app')

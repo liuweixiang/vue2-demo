@@ -15,8 +15,7 @@
     },
     methods: {
       init() {
-        let age = ''
-        let proto = Object.__proto__
+        let aaa = ''
       }
     }
   }

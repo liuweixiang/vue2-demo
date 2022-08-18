@@ -8,4 +8,3 @@ export default function(sfc) {
   sfc.components = Object.assign(sfc.components || {}, {})
   return createBasic(sfc)
 }
- 

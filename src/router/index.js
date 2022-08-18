@@ -48,8 +48,7 @@ const routes = [
     path: '/iframe',
     name: 'iframe',
     component: () => import('../views/Iframe/iframe.vue')
-  },
-  
+  }
 ]
 
 const router = new VueRouter({

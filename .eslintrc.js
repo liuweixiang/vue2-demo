@@ -39,7 +39,7 @@ module.exports = {
     semi: ['error', 'never'], // 关闭无效分号
     indent: ['off', 2, { SwitchCase: 1 }], // 缩进两个，警告
     'no-useless-escape': 0, // 特殊字符可以使用
-    'no-unused-vars': 1, // 声明没使用关闭
+    'no-unused-vars': 2, // 声明没使用关闭
     'vue/no-side-effects-in-computed-properties': 'off', // 计算属性可以有副作用
     'no-empty': 'off', // 允许空块语句
     'no-undef': 'error', // 变量和参数拼写错误报错
