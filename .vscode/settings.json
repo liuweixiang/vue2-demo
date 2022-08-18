@@ -11,7 +11,7 @@
   "vetur.validation.template": false, // 关闭 Vetur 的模板验证
   "vetur.format.enable": false, // 打开或关闭 Vetur 格式化程序
   // "vetur.format.defaultFormatter": "none", // 可用来设置不同语言的格式化程序
-  "stylelint.autoFixOnSave": false, // stylelint保存自动格式化
+  // "stylelint.autoFixOnSave": false, // stylelint保存自动格式化
 
   // 该配置要求vscode编辑器必须安装 ESLint 扩展插件(扩展商店搜索eslint安装)
   "editor.defaultFormatter": "esbenp.prettier-vscode",

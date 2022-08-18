@@ -10,7 +10,7 @@ const trigger = (el, type) => {
 
 const emoji = {
   bind: function(el, binding, vnode) {
-    //正则规则可根据需求自定义
+    // 正则规则可根据需求自定义
     let regRule = /[^\u4E00-\u9FA5|\d|a-zA-Z|\r\n\s,.?!，。？！…—&$=()-+/*{}[\]]|\s/g
     const $inp = findEle(el, 'input')
     el.$inp = $inp
@@ -28,7 +28,7 @@ const emoji = {
 
 export default emoji
 
-/*const emoji = {
+/* const emoji = {
   componentUpdated (el, binding, vnode) {
     console.log(binding, 'dom更新')
   }

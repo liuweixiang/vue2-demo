@@ -127,7 +127,7 @@
           window.addEventListener(
             'resize',
             function() {
-              //当调整浏览器窗口大小时，发生 resize 事件。
+              // 当调整浏览器窗口大小时，发生 resize 事件。
               clearTimeout(this.resizeTimer)
               this.resizeTimer = this.setTimeout(refreshRem, 200)
             },
@@ -136,7 +136,7 @@
           window.addEventListener(
             'pageshow',
             function(e) {
-              //事件在每次加载页面时触发,类似于 onload 事件
+              // 事件在每次加载页面时触发,类似于 onload 事件
               if (e.persisted) {
                 clearTimeout(this.pageshowTimer)
                 this.pageshowTimer = this.setTimeout(refreshRem, 200)

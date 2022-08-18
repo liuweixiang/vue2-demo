@@ -25,7 +25,7 @@ export const debounce = {
   }
 }
 
-//throttle 节流
+// throttle 节流
 export const throttle = {
   inserted(el, binding) {
     if (typeof binding.value !== 'function') {
