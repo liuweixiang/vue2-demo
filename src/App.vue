@@ -14,7 +14,9 @@
       }
     },
     methods: {
-      init() {}
+      init() {
+        // let obj = Object.__proto__
+      }
     }
   }
 </script>
