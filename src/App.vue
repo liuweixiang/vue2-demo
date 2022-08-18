@@ -10,7 +10,8 @@
     components: {},
     data() {
       return {
-        name: ''
+        name: '',
+        age: 18
       }
     },
     methods: {
