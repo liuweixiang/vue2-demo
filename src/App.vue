@@ -14,9 +14,7 @@
       }
     },
     methods: {
-      init() {
-        let aaa = ''
-      }
+      init() {}
     }
   }
 </script>
