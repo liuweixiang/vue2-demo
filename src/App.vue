@@ -15,9 +15,7 @@
       }
     },
     methods: {
-      init() {
-        let obj = {}
-      }
+      init() {}
     }
   }
 </script>
