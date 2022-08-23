@@ -23,6 +23,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 项目说明
 git 操作练习测试及个人日常练习项目
+#### 框架主要功能点
+1，eslint，prettier代码格式化校验，配置等
+2，vscode工作区相关配置
+3，git commit 提交校验功能
 
 
 ### vue demo级别项目，主要测试功能如下
