@@ -6,14 +6,20 @@
     "*.cjson": "jsonc"
   },
   "editor.tabSize": 2,
-  // 关闭编辑器自带保存格式化功能，此功能会用Vetur进行格式化(使用prettier时需要开启)
+  // 保存时格式化文件
+  // 使用prettier时必须打开
+  // 单独使用eslint，且仅设置eslint.format.enable为true时必须打开
+  // 单独使用eslint，且设置source.fixAll.eslint为true时打开关闭都可以(无需关注)
   "editor.formatOnSave": true,
-  "vetur.validation.template": false, // 关闭 Vetur 的模板验证
-  "vetur.format.enable": false, // 打开或关闭 Vetur 格式化程序
-  // "vetur.format.defaultFormatter": "none", // 可用来设置不同语言的格式化程序
+
+  // 打开或关闭 Vetur 格式化程序
+  "vetur.format.enable": false,
+  "vetur.validation.script": false, // 关闭 Vetur 的script验证
+  "vetur.validation.style": false, // 关闭 Vetur 的style验证
+  "vetur.validation.template": false, // 关闭 Vetur 的template验证
   // "stylelint.autoFixOnSave": false, // stylelint保存自动格式化
 
-  // 该配置要求vscode编辑器必须安装 ESLint 扩展插件(扩展商店搜索eslint安装)
+  // 定义默认格式化程序(需安装prettier插件)(格式化html)
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.validate": [
     "javascript",
@@ -24,8 +30,12 @@
     "html",
     "vue"
   ],
-  // 是否为JavaScript文件开启eslint检测，默认开启
+
+  // 是否启用eslint
   "eslint.enable": true,
+  // 启用eslint作为格式化程序
+  "eslint.format.enable": true,
+  // 定义在保存时运行的格式化程序
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
     "source.fixAll.eslint": true
