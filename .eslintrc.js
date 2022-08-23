@@ -50,7 +50,7 @@ module.exports = {
       'error',
       'always'
     ],
-    quotes: [1, 'single'],
+    quotes: [1, 'single'], // 单引号
     'comma-dangle': 'off',
     'no-multiple-empty-lines': 'error', // 禁止空行
     'no-proto': 2, // 禁用 __proto__ 属性
