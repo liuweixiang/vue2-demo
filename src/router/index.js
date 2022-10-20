@@ -48,6 +48,11 @@ const routes = [
     path: '/iframe',
     name: 'iframe',
     component: () => import('../views/Iframe/iframe.vue')
+  },
+  {
+    path: '/echarts',
+    name: 'echarts',
+    component: () => import('../views/ECharts/echarts.vue')
   }
 ]
 
