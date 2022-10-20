@@ -2,3 +2,4 @@ commitlint.config.js
 README.md
 jsconfig.json
 babel.config.js
+/assets/js/
