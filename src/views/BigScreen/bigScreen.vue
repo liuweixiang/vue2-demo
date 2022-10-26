@@ -51,7 +51,7 @@
       </div>
     </dv-full-screen-container> -->
 
-    <div class="screen-box borderBox">
+    <div class="screen-box borderBox" id="screen">
       <div class="top-box"></div>
       <div class="bottom-box borderBox">
         <div class="left fullHeight borderBox">
@@ -113,6 +113,15 @@
         pageshowTimer: null
       }
     },
+    mounted() {
+      // this.remResize()
+      this.resizeFn()
+      window.onresize = () => this.resizeFn()
+    },
+    beforeDestroy() {
+      window.onresize = null
+    },
+    watch: {},
     methods: {
       remResize() {
         this.$nextTick(() => {
@@ -146,11 +155,20 @@
           )
           refreshRem()
         })
+      },
+      // 大屏等比例适配
+      resizeFn() {
+        const designDraftWidth = 1920 // 设计稿的宽度
+        const designDraftHeight = 960 // 设计稿的高度
+        // 根据屏幕的变化适配的比例
+        const scale =
+          document.documentElement.clientWidth / document.documentElement.clientHeight <
+          designDraftWidth / designDraftHeight
+            ? document.documentElement.clientWidth / designDraftWidth
+            : document.documentElement.clientHeight / designDraftHeight
+        // 缩放比例
+        document.querySelector('#screen').style.transform = `scale(${scale})`
       }
-    },
-    watch: {},
-    mounted() {
-      this.remResize()
     }
   }
 </script>
@@ -159,7 +177,8 @@
   .container {
     width: 100%;
     height: 100%;
-    font-size: 1.6rem;
+    background: #00092d;
+    // font-size: 1.6rem;
 
     .borderBox {
       box-sizing: border-box;
@@ -178,11 +197,18 @@
     }
 
     .screen-box {
-      width: 100%;
-      height: 100%;
+      // width: 100%;
+      // height: 100%;
       background: #00092d;
       padding: 0 24px 24px;
       color: #ffffff;
+
+      display: inline-block;
+      width: 1920px; //设计稿的宽度
+      height: 960px; //设计稿的高度
+      transform-origin: 0 0;
+      position: absolute;
+      // left: 50%;
 
       .top-box {
         width: 100%;

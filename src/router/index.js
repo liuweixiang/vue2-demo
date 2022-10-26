@@ -25,8 +25,8 @@ const routes = [
     component: () => import('../views/Home/AboutView.vue')
   },
   {
-    path: '/dataV',
-    name: 'dataV',
+    path: '/bigScreen',
+    name: 'bigScreen',
     component: () => import('../views/BigScreen/bigScreen.vue')
   },
   {
