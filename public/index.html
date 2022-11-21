@@ -1,17 +1,110 @@
 <!DOCTYPE html>
 <html lang="">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without
+        JavaScript enabled. Please enable it to continue.</strong
+      >
     </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div id="app" style="display: none;">
+      <style>
+        .app-loading {
+          display: flex;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background: #fff;
+        }
+
+        .app-loading .app-loading-wrap {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          display: flex;
+          -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+
+        .app-loading .dots {
+          display: flex;
+          padding: 98px;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .app-loading .app-loading-title {
+          display: flex;
+          margin-top: 30px;
+          font-size: 30px;
+          color: rgba(0, 0, 0, 0.85);
+          justify-content: center;
+          align-items: center;
+        }
+
+        .app-loading .app-loading-logo {
+          display: block;
+          width: 268px;
+          height: 154px;
+          margin: 0 auto;
+          margin-bottom: 24px;
+        }
+
+        .app-loading-progress {
+          width: 340px;
+          height: 6px;
+          background: #eee;
+          border-radius: 7px;
+        }
+
+        .app-welcome-text {
+          margin-bottom: 32px;
+          font-size: 22px;
+          font-weight: 500;
+          line-height: 30px;
+          color: #000;
+          text-align: left;
+        }
+
+        #progress-bar {
+          width: 0px;
+          height: 6px;
+          background: #27b57d;
+          border-radius: 7px;
+        }
+
+        #progress-text {
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 25px;
+          color: #27b57d;
+          text-align: left;
+        }
+      </style>
+      <div class="app-loading">
+        <div class="app-loading-wrap">
+          <div id="welcome-text" class="app-welcome-text">欢迎使用刘伟翔的平台</div>
+          <img src="./loading.gif" class="app-loading-logo" alt="Logo" />
+          <div class="app-loading-progress">
+            <div id="progress-bar"></div>
+          </div>
+          <div id="progress-text"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./loading.js"></script>
   </body>
 </html>

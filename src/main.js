@@ -8,21 +8,22 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/style/reset.scss'
 
 import MessageBox from './components/MessageBox/index.js'
-Vue.use(MessageBox)
 
 import toEnctry from './utils/logMeassage/index.js'
-Vue.use(toEnctry)
 
 import ShowInfo from './components/ShowInfo/index'
 Vue.prototype.$confirm = ShowInfo.confirm
 
 import './utils/directives/index.js'
-Vue.use(ElementUI)
 
 import dataV from '@jiaminghi/data-view'
-Vue.use(dataV)
-// ==========================================rem
 
+Vue.use(ElementUI)
+Vue.use(MessageBox)
+Vue.use(toEnctry)
+Vue.use(dataV)
+
+// ==========================================rem
 // (function (win) {
 // var doc = win.document
 // var docEl = doc.documentElement
@@ -68,8 +69,17 @@ Vue.use(dataV)
 
 Vue.config.productionTip = false
 
-new Vue({
+// 全局前置守卫
+// router.beforeEach((to, from, next) => {
+//   // 返回 false 以取消导航
+//   next()
+// })
+
+const app = new Vue({
   router,
   store,
   render: (h) => h(App)
-}).$mount('#app')
+})
+// setTimeout(() => {
+app.$mount('#app')
+// }, 3000)
