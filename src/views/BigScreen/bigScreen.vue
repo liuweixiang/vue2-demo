@@ -56,7 +56,11 @@
       <div class="bottom-box borderBox">
         <div class="left fullHeight borderBox">
           <div class="left-top fullWidth">
-            <dv-border-box-7>left-top</dv-border-box-7>
+            <!-- <dv-border-box-7>left-top</dv-border-box-7> -->
+            <BorderBox components-ref="leftTopRef">
+              <div style="height: 30px;line-height: 30px;">left-top-header</div>
+              <div style="height: calc(31.7vh - 62px)">left-top-content</div>
+            </BorderBox>
           </div>
           <div class="left-center fullWidth">
             <dv-border-box-7>left-center</dv-border-box-7>
@@ -103,9 +107,11 @@
 </template>
 
 <script>
+  import BorderBox from '@/components/BorderBox/index.vue'
+
   export default {
-    name: '',
-    components: {},
+    name: 'bigScreen',
+    components: { BorderBox },
     props: {},
     data() {
       return {
