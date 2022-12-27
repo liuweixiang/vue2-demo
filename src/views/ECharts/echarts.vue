@@ -1,16 +1,20 @@
 <template>
   <div class="echarts-content">
     <div id="echartsRef" style="width: 500px; height: 400px;background: #eee;"></div>
+    <huanglingMap></huanglingMap>
   </div>
 </template>
 
 <script>
   import * as echarts from 'echarts'
   import '@/assets/js/china.js'
+  import huanglingMap from './components/huanglingMap.vue'
 
   export default {
     name: 'echarts',
-    components: {},
+    components: {
+      huanglingMap
+    },
     props: {},
     data() {
       return {
@@ -562,5 +566,6 @@
 
 <style lang="scss" scoped>
   .echarts-content {
+    display: flex;
   }
 </style>
