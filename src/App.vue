@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <router-view />
-  </div>
+  <router-view />
 </template>
 
 <script>
@@ -26,10 +24,5 @@
     font-family: PingFangSC, PingFangWC-Medium;
     overflow: visible !important;
     overflow-x: hidden !important;
-  }
-
-  #app {
-    width: 100%;
-    height: 100vh;
   }
 </style>
